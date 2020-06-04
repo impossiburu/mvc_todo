@@ -13,6 +13,6 @@ class Model_Admin extends Model {
         }
 
         db::query('DELETE FROM todo WHERE id = ?', $id);
-        header("location: /php-test/admin/action");
+        header("location: /admin/action");
     }
 }
