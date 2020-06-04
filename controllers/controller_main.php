@@ -23,9 +23,9 @@ class Controller_Main extends Controller {
     public function insert() {
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['text'])) {
             $postData = [ 
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'text' => $_POST['text']
+                'name' => htmlspecialchars($_POST['name']),
+                'email' => htmlspecialchars($_POST['email']),
+                'text' => htmlspecialchars($_POST['text'])
             ];
         }
 
