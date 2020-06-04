@@ -18,6 +18,6 @@ class Model_Edit extends Model {
         }
 
         db::query('UPDATE todo SET `text` = ?, `done` = ? WHERE `id` = ?', array_values($clientData));
-        header("location: /php-test/admin/action");
+        header("location: /admin/action");
     }
 }
