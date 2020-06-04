@@ -2,7 +2,7 @@
     <h1>Все записи</h1>
     <ul>
         <li><a href="logout">Выйти</a></li>
-        <li><a href="/php-test/main/action">Главная</a></li>
+        <li><a href="/main/action">Главная</a></li>
     </ul>
     <?php foreach ($data as $row) { ?>
       <?php echo '<div class="card">
