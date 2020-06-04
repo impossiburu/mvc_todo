@@ -2,7 +2,7 @@
 
 class Model {
     
-    function getData()
+    function getData($id = null)
     {
         
     }
