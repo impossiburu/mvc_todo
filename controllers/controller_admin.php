@@ -1,31 +1,38 @@
 <?php
 
-class Controller_Login extends Controller {
+class Controller_Admin extends Controller {
 
-    function __construct() {
-        $this->model = new Model_Login();
-        $this->view = new View();
-    }
-    
-    public function action() {
-        $usersData = $this->model->getData();
-        $user = [];
-        foreach ($usersData as $userData) {
-            $user = $userData;
-        }
-        
-        if (isset($_POST['login']) && isset($_POST['password'])) {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
+	function __construct()
+	{
+		$this->model = new Model_Admin();
+		$this->view = new View();
+	}
+	
+	public function action() {
+        session_start();
+	
+		if ($_SESSION['admin']) {
+			$data = $this->model->getData();
+			$this->view->render('admin.php', 'template.php', $data, true);
+		} else {
+			session_destroy();
+			Route::Error();
+		}
+	}
 
-            if ($login == $user['user'] && $password == $user['password']) {
-                session_start();
-                $_SESSION['admin'] = $password;
-                header('Location: /admin/action');
-            } else {
-                header('Location: /login/action');
-            }
-        }
-        $this->view->render('login.php', 'template.php');
-    }
+	public function delete() {
+		session_start();
+
+		if (!empty($_GET['id'])) {
+			$id[] = $_GET['id'];
+			$this->model->deleteItem($id);
+		}
+	}
+	
+	function logout() {
+		session_start();
+		session_destroy();
+
+		header('Location: /main/action');
+	}
 }
