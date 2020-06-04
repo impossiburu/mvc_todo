@@ -21,9 +21,9 @@ class Controller_Login extends Controller {
             if ($login == $user['user'] && $password == $user['password']) {
                 session_start();
                 $_SESSION['admin'] = $password;
-                header('Location: /php-test/admin/action');
+                header('Location: /admin/action');
             } else {
-                header('Location: /php-test/login/action');
+                header('Location: /login/action');
             }
         }
         $this->view->render('login.php', 'template.php');
