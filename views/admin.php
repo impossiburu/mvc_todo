@@ -1,15 +1,23 @@
 <div class="container">
     <h1>Все записи</h1>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Заголовок</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Выполнено</label>
-            </div>
-            <a href="#" class="btn btn-primary">Редактировать</a>
-            <a href="#" class="btn btn-primary">Удалить</a>
-        </div>
-    </div>
+    <ul>
+        <li><a href="logout">Выйти</a></li>
+        <li><a href="/php-test/main/action">Главная</a></li>
+    </ul>
+    <?php foreach ($data as $row) { ?>
+      <?php echo '<div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">'.$row['name'].'</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">'.$row['email'].'</h6>
+                        <p class="card-text">'.$row['text'].'</p>' ?>
+                        <?php if ($row['done']) {
+                            echo ' <h5 class="card-title">Выполнено</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Обновлено администратором</h6>'; } ?> 
+                    
+                    
+        <?php echo '<a href="/edit/action/?id='.$row['id'].'" class="btn btn-primary">Редактировать</a>
+                    <a href="/admin/delete/?id='.$row['id'].'" class="btn btn-primary">Удалить</a>
+                    </div>
+                  </div>'; ?>
+   <?php } ?>
 </div>
