@@ -12,7 +12,7 @@ class Controller_Edit extends Controller {
         session_start();
 
         if ($_SESSION['admin']) {
-            $id[] = $_GET['id'];
+            $id[] = htmlspecialchars($_GET['id']);
             $data = $this->model->getData($id);
             $this->view->render('edit.php', 'template.php', $data, true);
 		} else {
@@ -27,15 +27,15 @@ class Controller_Edit extends Controller {
         if (!empty($_POST['text']) && !empty($_POST['id'])) {
             if ($_POST['done']) {
                 $clientData = [
-                    'text' => $_POST['text'],
+                    'text' => htmlspecialchars($_POST['text']),
                     'done' => 1,
-                    'id' => $_POST['id']
+                    'id' => htmlspecialchars($_POST['id'])
                 ];
             } else {
                 $clientData = [
-                    'text' => $_POST['text'],
+                    'text' => htmlspecialchars($_POST['text']),
                     'done' => 0,
-                    'id' => $_POST['id']
+                    'id' => htmlspecialchars($_POST['id'])
                 ];
                 
             }
