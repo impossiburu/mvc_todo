@@ -8,10 +8,16 @@ class Controller_Main extends Controller {
         $this->view = new View();
     }
     
-    public function action()
-    {
+    public function action() {
+
+        session_start();
+
         $data = $this->model->getData();
-        $this->view->render('main.php', 'template.php', $data);
+        if ($_SESSION['admin']) {
+            $this->view->render('main.php', 'template.php', $data, true);
+        } else {
+            $this->view->render('main.php', 'template.php', $data);
+        }
     }
 
     public function insert() {
