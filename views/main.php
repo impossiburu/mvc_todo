@@ -1,10 +1,10 @@
 <div class="container">
     <h1>Главная</h1>
     <?php if ($auth) { ?>
-        <a href="/php-test/admin/logout">Выйти</a>
-        <a href="/php-test/admin/action">Админ Панель</a>
+        <a href="/admin/logout">Выйти</a>
+        <a href="/admin/action">Админ Панель</a>
     <?php } else { ?>
-        <a href="/php-test/login/action">Авторизация</a>
+        <a href="/login/action">Авторизация</a>
     <?php } ?>
     <?php foreach ($data as $row) {
         echo '<div class="card">
