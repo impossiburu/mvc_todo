@@ -15,8 +15,8 @@ class Controller_Login extends Controller {
         }
         
         if (isset($_POST['login']) && isset($_POST['password'])) {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
+            $login = htmlspecialchars($_POST['login']);
+            $password = htmlspecialchars($_POST['password']);
 
             if ($login == $user['user'] && $password == $user['password']) {
                 session_start();
