@@ -8,11 +8,11 @@ class Route {
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
-        if (!empty($routes[2])) {
-            $controllerName = $routes[2];
+        if (!empty($routes[1])) {
+            $controllerName = $routes[1];
         }
-        if (!empty($routes[3])) {
-            $actionName = $routes[3];
+        if (!empty($routes[2])) {
+            $actionName = $routes[2];
         }
         
         $modelName = 'Model_'.$controllerName;
